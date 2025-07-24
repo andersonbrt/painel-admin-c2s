@@ -68,6 +68,49 @@
                     <p>Bem-vindo ao painel administrativo!</p>
                 </div>
 
+                <!-- Página Ferramentas -->
+                <div id="ferramentas" class="page d-none">
+                    <h3>Ferramentas</h3>
+                    <button class="btn btn-primary my-2" onclick="openForm('formCredencial')">Nova Ferramenta</button>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Status</th>
+                                <th>ApiKey</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listaFerramentas">
+                            <!-- Populado dinamicamente -->
+                        </tbody>
+                    </table>
+
+                    <div id="formCredencial" class="d-none">
+                        <h5>Nova Credencial</h5>
+                        <form onsubmit="event.preventDefault(); salvarCredencial()">
+                            <div class="row g-2">
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" placeholder="Nome" id="credNome" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <select class="form-control" id="credStatus" required>
+                                        <option value="">Status</option>
+                                        <option value="Ativo">Ativo</option>
+                                        <option value="Inativo">Inativo</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" placeholder="ApiKey" id="credApiKey" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success mt-2">Salvar</button>
+                        </form>
+                    </div>
+                </div>
+
                 <!-- Página Correlações -->
                 <div id="correlacoes" class="page d-none">
                     <h3>Correlações</h3>
@@ -159,49 +202,6 @@
                             <!-- Populado via JS -->
                         </tbody>
                     </table>
-                </div>
-
-                <!-- Página Ferramentas -->
-                <div id="ferramentas" class="page d-none">
-                    <h3>Ferramentas</h3>
-                    <button class="btn btn-primary my-2" onclick="openForm('formCredencial')">Nova Ferramenta</button>
-
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Status</th>
-                                <th>ApiKey</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody id="listaFerramentas">
-                            <!-- Populado dinamicamente -->
-                        </tbody>
-                    </table>
-
-                    <div id="formCredencial" class="d-none">
-                        <h5>Nova Credencial</h5>
-                        <form onsubmit="event.preventDefault(); salvarCredencial()">
-                            <div class="row g-2">
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" placeholder="Nome" id="credNome" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <select class="form-control" id="credStatus" required>
-                                        <option value="">Status</option>
-                                        <option value="Ativo">Ativo</option>
-                                        <option value="Inativo">Inativo</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="text" class="form-control" placeholder="ApiKey" id="credApiKey" required>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-success mt-2">Salvar</button>
-                        </form>
-                    </div>
                 </div>
 
             </main>
