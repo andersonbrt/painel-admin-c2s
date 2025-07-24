@@ -55,9 +55,9 @@
                     <h3>Painel Admin</h3>
                 </div>
                 <a href="#" onclick="showPage('dashboard')">Dashboard</a>
+                <a href="#" onclick="showPage('ferramentas')">Ferramentas</a>
                 <a href="#" onclick="showPage('correlacoes')">Correlações</a>
                 <a href="#" onclick="showPage('logs')">Ver Logs</a>
-                <a href="#" onclick="showPage('ferramentas')">Ferramentas</a>
                 <a href="#" onclick="logout()">Logout</a>
 
             </nav>
@@ -71,7 +71,7 @@
                 <!-- Página Ferramentas -->
                 <div id="ferramentas" class="page d-none">
                     <h3>Ferramentas</h3>
-                    <button class="btn btn-primary my-2" onclick="openForm('formCredencial')">Nova Ferramenta</button>
+                    <button class="btn btn-primary my-2" onclick="openForm('formFerramenta')">Nova Ferramenta</button>
 
                     <table class="table table-striped">
                         <thead>
@@ -88,9 +88,9 @@
                         </tbody>
                     </table>
 
-                    <div id="formCredencial" class="d-none">
-                        <h5>Nova Credencial</h5>
-                        <form onsubmit="event.preventDefault(); salvarCredencial()">
+                    <div id="formFerramenta" class="d-none">
+                        <h5>Nova Ferramenta</h5>
+                        <form onsubmit="event.preventDefault(); salvarFerramenta()">
                             <div class="row g-2">
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" placeholder="Nome" id="credNome" required>
@@ -211,7 +211,7 @@
         let etapaAtual = 1;
         let idCorrelacao = 1;
         let listaFerramentas = [];
-        let credencialId = 1;
+        let ferramentaId = 1;
         let logsCorrelacoes = [];
 
         const campos = {
@@ -284,40 +284,40 @@
             alert(`Reenviando log de ${log.nome} (${log.correlacao})`);
         }
 
-        function salvarCredencial() {
+        function salvarFerramenta() {
             const nome = document.getElementById("credNome").value;
             const status = document.getElementById("credStatus").value;
             const apikey = document.getElementById("credApiKey").value;
 
-            const credencial = {
-                id: credencialId,
+            const ferramenta = {
+                id: ferramentaId,
                 nome,
                 status,
                 apikey
             };
 
-            listaFerramentas.push(credencial);
+            listaFerramentas.push(ferramenta);
 
             const novaLinha = `
         <tr>
-            <td>${credencialId}</td>
+            <td>${ferramentaId}</td>
             <td>${nome}</td>
             <td>${status}</td>
             <td>${apikey}</td>
             <td>
-                <button class="btn btn-sm btn-warning" onclick="editItem('credencial', ${credencialId})">Editar</button>
-                <button class="btn btn-sm btn-danger" onclick="deleteItem('credencial', ${credencialId})">Deletar</button>
+                <button class="btn btn-sm btn-warning" onclick="editItem('ferramenta', ${ferramentaId})">Editar</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteItem('ferramenta', ${ferramentaId})">Deletar</button>
             </td>
         </tr>
     `;
 
             document.getElementById("listaFerramentas").insertAdjacentHTML("beforeend", novaLinha);
-            credencialId++;
+            ferramentaId++;
 
-            alert("Credencial salva com sucesso!");
+            alert("Ferramenta salva com sucesso!");
 
-            document.querySelector('#formCredencial form').reset();
-            document.getElementById("formCredencial").classList.add("d-none");
+            document.querySelector('#formFerramenta form').reset();
+            document.getElementById("formFerramenta").classList.add("d-none");
 
             atualizarSelectFerramentas();
         }
