@@ -57,7 +57,7 @@
                 <a href="#" onclick="showPage('dashboard')">Dashboard</a>
                 <a href="#" onclick="showPage('correlacoes')">Correlações</a>
                 <a href="#" onclick="showPage('logs')">Ver Logs</a>
-                <a href="#" onclick="showPage('credenciais')">Credenciais</a>
+                <a href="#" onclick="showPage('ferramentas')">Ferramentas</a>
                 <a href="#" onclick="logout()">Logout</a>
 
             </nav>
@@ -161,10 +161,10 @@
                     </table>
                 </div>
 
-                <!-- Página Credenciais -->
-                <div id="credenciais" class="page d-none">
-                    <h3>Credenciais</h3>
-                    <button class="btn btn-primary my-2" onclick="openForm('formCredencial')">Nova Credencial</button>
+                <!-- Página Ferramentas -->
+                <div id="ferramentas" class="page d-none">
+                    <h3>Ferramentas</h3>
+                    <button class="btn btn-primary my-2" onclick="openForm('formCredencial')">Nova Ferramenta</button>
 
                     <table class="table table-striped">
                         <thead>
@@ -176,7 +176,7 @@
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody id="listaCredenciais">
+                        <tbody id="listaFerramentas">
                             <!-- Populado dinamicamente -->
                         </tbody>
                     </table>
@@ -210,7 +210,7 @@
     <script>
         let etapaAtual = 1;
         let idCorrelacao = 1;
-        let listaCredenciais = [];
+        let listaFerramentas = [];
         let credencialId = 1;
         let logsCorrelacoes = [];
 
@@ -296,7 +296,7 @@
                 apikey
             };
 
-            listaCredenciais.push(credencial);
+            listaFerramentas.push(credencial);
 
             const novaLinha = `
         <tr>
@@ -311,7 +311,7 @@
         </tr>
     `;
 
-            document.getElementById("listaCredenciais").insertAdjacentHTML("beforeend", novaLinha);
+            document.getElementById("listaFerramentas").insertAdjacentHTML("beforeend", novaLinha);
             credencialId++;
 
             alert("Credencial salva com sucesso!");
@@ -330,7 +330,7 @@
             selectA.innerHTML = `<option value="">Selecione</option>`;
             selectB.innerHTML = `<option value="">Selecione</option>`;
 
-            listaCredenciais.forEach(cred => {
+            listaFerramentas.forEach(cred => {
                 if (cred.status === "Ativo") {
                     const optA = document.createElement("option");
                     const optB = document.createElement("option");
